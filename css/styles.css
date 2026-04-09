@@ -1,0 +1,92 @@
+/* =========================
+   Global Base Styles
+========================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+
+pre {
+  background-color: #111827;
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Courier New", monospace;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+.custom-nav {
+  background: linear-gradient(90deg, #1d4ed8, #0f766e);
+}
+
+.navbar-brand,
+.nav-link {
+  font-weight: 600;
+}
+
+/* =========================
+   Layout Sections
+========================= */
+
+.hero-section,
+.page-intro,
+.content-card,
+.feature-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.feature-card h2,
+.content-card h2 {
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+}
+
+/* =========================
+   Images
+========================= */
+
+.profile-image {
+  max-width: 220px;
+  border-radius: 1rem;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   Utility
+========================= */
+
+.hidden {
+  display: none;
+}

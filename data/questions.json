@@ -1,0 +1,32 @@
+[
+  {
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Text Markup Language",
+      "High Transfer Machine Language",
+      "Hyper Tool Markdown Language",
+      "Home Text Markup Language"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which language is mainly used for styling web pages?",
+    "options": [
+      "Python",
+      "CSS",
+      "SQL",
+      "Java"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which language is used to add interactivity to a webpage?",
+    "options": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "XML"
+    ],
+    "answer": 2
+  }
+]
