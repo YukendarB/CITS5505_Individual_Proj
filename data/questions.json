@@ -1,32 +1,218 @@
 [
   {
+    "topic": "html",
     "question": "What does HTML stand for?",
-    "options": [
-      "Hyper Text Markup Language",
-      "High Transfer Machine Language",
-      "Hyper Tool Markdown Language",
-      "Home Text Markup Language"
-    ],
+    "options": ["Hyper Text Markup Language", "High Transfer Machine Language", "Hyper Tool Markdown Language", "Home Text Markup Language"],
     "answer": 0
   },
   {
-    "question": "Which language is mainly used for styling web pages?",
-    "options": [
-      "Python",
-      "CSS",
-      "SQL",
-      "Java"
-    ],
+    "topic": "html",
+    "question": "Which element is used for the main heading on a page?",
+    "options": ["<title>", "<h1>", "<header>", "<main>"],
     "answer": 1
   },
   {
-    "question": "Which language is used to add interactivity to a webpage?",
-    "options": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "XML"
-    ],
+    "topic": "html",
+    "question": "Which attribute provides alternative text for an image?",
+    "options": ["src", "href", "alt", "title"],
     "answer": 2
+  },
+  {
+    "topic": "html",
+    "question": "Which element creates a clickable link?",
+    "options": ["<a>", "<link>", "<buttonlink>", "<href>"],
+    "answer": 0
+  },
+  {
+    "topic": "html",
+    "question": "Which element is used to group navigation links?",
+    "options": ["<section>", "<nav>", "<aside>", "<article>"],
+    "answer": 1
+  },
+  {
+    "topic": "html",
+    "question": "Which element should contain the unique visible content of a webpage?",
+    "options": ["<main>", "<meta>", "<style>", "<script>"],
+    "answer": 0
+  },
+  {
+    "topic": "html",
+    "question": "Which input type is best for selecting one option from a group?",
+    "options": ["checkbox", "radio", "text", "range"],
+    "answer": 1
+  },
+  {
+    "topic": "html",
+    "question": "Which element is used to define a table row?",
+    "options": ["<td>", "<th>", "<tr>", "<table-row>"],
+    "answer": 2
+  },
+  {
+    "topic": "html",
+    "question": "Where should the page title shown in the browser tab be placed?",
+    "options": ["Inside <body>", "Inside <head>", "Inside <footer>", "Inside <main>"],
+    "answer": 1
+  },
+  {
+    "topic": "html",
+    "question": "Which element is best for a standalone piece of content such as a blog post?",
+    "options": ["<article>", "<span>", "<br>", "<meta>"],
+    "answer": 0
+  },
+  {
+    "topic": "html",
+    "question": "Which attribute connects a label to a form control by id?",
+    "options": ["name", "for", "target", "rel"],
+    "answer": 1
+  },
+  {
+    "topic": "html",
+    "question": "Which element represents emphasized text?",
+    "options": ["<em>", "<mark>", "<small>", "<code>"],
+    "answer": 0
+  },
+  {
+    "topic": "css",
+    "question": "Which language is mainly used for styling web pages?",
+    "options": ["HTML", "CSS", "SQL", "Python"],
+    "answer": 1
+  },
+  {
+    "topic": "css",
+    "question": "Which CSS property changes text color?",
+    "options": ["font-style", "background", "color", "text-mode"],
+    "answer": 2
+  },
+  {
+    "topic": "css",
+    "question": "Which selector targets an element with id=\"intro\"?",
+    "options": [".intro", "#intro", "intro", "*intro"],
+    "answer": 1
+  },
+  {
+    "topic": "css",
+    "question": "Which selector targets all elements with class=\"card\"?",
+    "options": ["#card", ".card", "card", "*card"],
+    "answer": 1
+  },
+  {
+    "topic": "css",
+    "question": "Which property controls the space inside an element's border?",
+    "options": ["margin", "padding", "gap", "outline"],
+    "answer": 1
+  },
+  {
+    "topic": "css",
+    "question": "Which property controls the space outside an element's border?",
+    "options": ["margin", "padding", "line-height", "border-spacing"],
+    "answer": 0
+  },
+  {
+    "topic": "css",
+    "question": "Which display value is commonly used to create flexible one-dimensional layouts?",
+    "options": ["block", "inline", "flex", "table"],
+    "answer": 2
+  },
+  {
+    "topic": "css",
+    "question": "Which CSS feature is used for two-dimensional row and column layouts?",
+    "options": ["Grid", "Float", "Inline", "Clip"],
+    "answer": 0
+  },
+  {
+    "topic": "css",
+    "question": "Which property rounds the corners of an element?",
+    "options": ["corner-style", "border-radius", "border-curve", "radius-border"],
+    "answer": 1
+  },
+  {
+    "topic": "css",
+    "question": "Which rule is used to apply CSS only at certain viewport sizes?",
+    "options": ["@viewport", "@screen", "@media", "@responsive"],
+    "answer": 2
+  },
+  {
+    "topic": "css",
+    "question": "Which property controls how quickly a hover change animates?",
+    "options": ["transition", "transform", "animation-name", "delay-only"],
+    "answer": 0
+  },
+  {
+    "topic": "css",
+    "question": "Which property changes the stacking order of positioned elements?",
+    "options": ["stack", "layer", "z-index", "order-index"],
+    "answer": 2
+  },
+  {
+    "topic": "javascript",
+    "question": "Which language is used to add interactivity to a webpage?",
+    "options": ["HTML", "CSS", "JavaScript", "SVG"],
+    "answer": 2
+  },
+  {
+    "topic": "javascript",
+    "question": "Which method selects the first element that matches a CSS selector?",
+    "options": ["document.querySelector()", "document.findFirst()", "document.getStyle()", "document.pick()"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which event fires after the HTML document has been fully parsed?",
+    "options": ["click", "DOMContentLoaded", "mouseover", "submit"],
+    "answer": 1
+  },
+  {
+    "topic": "javascript",
+    "question": "Which keyword declares a variable that can be reassigned?",
+    "options": ["const", "let", "fixed", "static"],
+    "answer": 1
+  },
+  {
+    "topic": "javascript",
+    "question": "Which keyword declares a variable that cannot be reassigned?",
+    "options": ["const", "varies", "change", "mutable"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which method adds a function to run when an event occurs?",
+    "options": ["addEventListener()", "attachStyle()", "listenNow()", "onEventType()"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which format is commonly used to store structured data for AJAX loading?",
+    "options": ["JSON", "PNG", "MP3", "CSS"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which browser API stores small pieces of data across page reloads?",
+    "options": ["localStorage", "IntersectionObserver", "Canvas", "Navigator"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which operator checks both value and type equality?",
+    "options": ["==", "=", "===", "!==="],
+    "answer": 2
+  },
+  {
+    "topic": "javascript",
+    "question": "Which method converts a JSON string into a JavaScript value?",
+    "options": ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.open()"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which method sends an HTTP request and returns a Promise in modern browser JavaScript?",
+    "options": ["fetch()", "sendFile()", "requestPage()", "ajaxOnly()"],
+    "answer": 0
+  },
+  {
+    "topic": "javascript",
+    "question": "Which statement stops the browser's default form submission behavior?",
+    "options": ["event.preventDefault()", "event.stopPage()", "form.cancel()", "return submit"],
+    "answer": 0
   }
 ]

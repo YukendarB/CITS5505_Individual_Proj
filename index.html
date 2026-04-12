@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Foundations Hub</title>
+  <title>DevQuest | Web Learning Platform</title>
 
   <!-- Bootstrap CDN -->
   <link
@@ -12,76 +12,143 @@
   >
 
   <!-- Custom CSS -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon-index.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="home-page">
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
   <header class="site-header">
-    <nav class="navbar navbar-expand-lg navbar-dark custom-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-nav" aria-label="Main navigation">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Web Foundations Hub</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <a class="navbar-brand logo-link" href="index.html">
+          <img src="images/devquest-logo.svg" alt="DevQuest logo" class="devquest-logo">
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
-            <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
-            <li class="nav-item"><a class="nav-link" href="reflection.html">AI Reflection</a></li>
-            <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tutorial.html">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="quiz.html">Quiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reflection.html">AI Reflection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cv.html">CV</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
   <main class="container py-5">
-    <section class="hero-section text-center">
-      <h1 class="display-5 fw-bold">Welcome to Web Foundations Hub</h1>
-      <p class="lead mt-3">
-        Learn the fundamentals of HTML, CSS, and JavaScript, test your knowledge,
-        reflect on AI usage, and explore a personalised CV.
+
+    <!-- HERO -->
+    <section class="hero-section text-center" aria-labelledby="home-title">
+      <div class="hero-badge">Interactive Learning Platform</div>
+
+      <h1 class="hero-title" id="home-title">
+        Welcome to <span class="accent-text">DevQuest</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A guided journey through HTML, CSS, and JavaScript. Learn key concepts,
+        test your knowledge, reflect on your development process, and present your skills.
       </p>
 
       <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
-        <a href="tutorial.html" class="btn btn-primary btn-lg">Start Tutorial</a>
-        <a href="quiz.html" class="btn btn-outline-light btn-lg">Go to Quiz</a>
+        <a href="tutorial.html" class="btn btn-primary btn-lg">Start Learning</a>
+        <a href="quiz.html" class="btn btn-outline-light btn-lg">Take the Quiz</a>
       </div>
     </section>
 
-    <section class="row g-4 mt-4">
+    <!-- FEATURE / MISSION CARDS -->
+    <section class="row g-4 mt-5" aria-label="DevQuest sections">
+
+      <!-- Tutorial -->
       <div class="col-md-6 col-lg-3">
         <div class="feature-card h-100">
+          <div class="section-label">Mission 1</div>
           <h2>Tutorial</h2>
-          <p>Structured learning content covering HTML, CSS, and JavaScript fundamentals.</p>
+          <p>
+            Learn the foundations of HTML, CSS, and JavaScript through structured explanations and examples.
+          </p>
         </div>
       </div>
+
+      <!-- Quiz -->
       <div class="col-md-6 col-lg-3">
         <div class="feature-card h-100">
+          <div class="section-label">Mission 2</div>
           <h2>Quiz</h2>
-          <p>Test your understanding with dynamically loaded questions and score tracking.</p>
+          <p>
+            Test your knowledge with dynamic questions, instant scoring, and performance tracking.
+          </p>
         </div>
       </div>
+
+      <!-- AI Reflection -->
       <div class="col-md-6 col-lg-3">
         <div class="feature-card h-100">
+          <div class="section-label">Mission 3</div>
           <h2>AI Reflection</h2>
-          <p>Critically evaluate how AI tools supported the development of this project.</p>
+          <p>
+            Analyse how AI supported development and evaluate its reliability and limitations.
+          </p>
         </div>
       </div>
+
+      <!-- CV -->
       <div class="col-md-6 col-lg-3">
         <div class="feature-card h-100">
+          <div class="section-label">Mission 4</div>
           <h2>CV</h2>
-          <p>A professional curriculum vitae introducing the author and key strengths.</p>
+          <p>
+            Explore a professional profile showcasing skills, projects, and personal achievements.
+          </p>
         </div>
       </div>
+
     </section>
+
   </main>
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
   <footer class="site-footer text-center py-3">
-    <p class="mb-0">&copy; 2026 Web Foundations Hub</p>
+    <p class="mb-0">&copy; 2026 DevQuest</p>
   </footer>
 
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 </html>
