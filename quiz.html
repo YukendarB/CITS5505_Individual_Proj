@@ -79,6 +79,20 @@
     <div id="quizStatus" class="quiz-status" aria-live="polite"></div>
 
     <form id="quizForm" novalidate>
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-card progress-idle" id="quizProgressCard">
+          <div class="quiz-progress-meta">
+            <span class="quiz-progress-label" id="progressLabel">Ready for launch...</span>
+            <span class="quiz-progress-count">
+              <span id="answeredCount">0</span>/<span id="totalQuestions">0</span>
+            </span>
+          </div>
+          <div class="progress-shell" aria-hidden="true">
+            <div id="progressFill"></div>
+          </div>
+        </div>
+      </div>
+
       <div id="quizContainer"></div>
 
       <div class="quiz-actions mt-3">

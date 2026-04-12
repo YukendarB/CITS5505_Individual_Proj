@@ -1,80 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Tutorial | DevQuest</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial | DevQuest</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header class="site-header">
-<nav class="navbar navbar-expand-lg navbar-dark custom-nav" aria-label="Main navigation">
-<div class="container">
-<a class="navbar-brand logo-link" href="index.html">
-<img src="images/devquest-logo.svg" alt="DevQuest logo" class="devquest-logo">
-</a>
+  <nav class="navbar navbar-expand-lg navbar-dark custom-nav" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand logo-link" href="index.html">
+        <img src="images/devquest-logo.svg" alt="DevQuest logo" class="devquest-logo">
+      </a>
 
-<button
-class="navbar-toggler"
-type="button"
-data-bs-toggle="collapse"
-data-bs-target="#mainNav"
-aria-controls="mainNav"
-aria-expanded="false"
-aria-label="Toggle navigation"
->
-<span class="navbar-toggler-icon"></span>
-</button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<div class="collapse navbar-collapse" id="mainNav">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link active" href="tutorial.html" aria-current="page">Tutorial</a></li>
-<li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
-<li class="nav-item"><a class="nav-link" href="reflection.html">AI Reflection</a></li>
-<li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-</ul>
-</div>
-</div>
-</nav>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tutorial.html" aria-current="page">Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="reflection.html">AI Reflection</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <main class="container py-5">
 
-<section class="page-intro">
-<div class="section-label">Learning Journey</div>
-<h1>Tutorial</h1>
-<p>Learn HTML, CSS and JavaScript basics.</p>
-</section>
+  <section class="page-intro tutorial-hero" aria-labelledby="tutorialTitle">
+    <div class="section-label">MISSION 1</div>
+    <h1 id="tutorialTitle">Web Development Foundations</h1>
+    <p class="lead mb-4">
+      Build a beginner-friendly mental model of how webpages work: HTML creates meaning and structure,
+      CSS turns that structure into a readable interface, and JavaScript makes the page respond to people.
+    </p>
+    <div class="tutorial-pill-row" aria-label="Tutorial topics">
+      <span class="tutorial-pill">HTML</span>
+      <span class="tutorial-pill">CSS</span>
+      <span class="tutorial-pill">JavaScript</span>
+    </div>
+  </section>
 
-<section class="content-card mt-4">
-<h2>HTML</h2>
-<p>Structure of web pages.</p>
-<pre><code>&lt;h1&gt;Hello&lt;/h1&gt;</code></pre>
-</section>
+  <div class="tutorial-layout mt-4">
+    <nav class="topic-nav" aria-label="Tutorial topic shortcuts">
+      <span class="topic-nav-title">Lesson Path</span>
+      <a href="#html-module" class="topic-link">HTML</a>
+      <a href="#css-module" class="topic-link">CSS</a>
+      <a href="#javascript-module" class="topic-link">JavaScript</a>
+      <a href="#demo-module" class="topic-link">Demo</a>
+      <a href="#quiz-cta" class="topic-link">Quiz</a>
+    </nav>
 
-<section class="content-card mt-4">
-<h2>CSS</h2>
-<p>Styling web pages.</p>
-<pre><code>h1 { color: blue; }</code></pre>
-</section>
+    <div class="tutorial-content-flow">
 
-<section class="content-card mt-4">
-<h2>JavaScript</h2>
-<p>Add interactivity.</p>
-<pre><code>alert("Hello");</code></pre>
-</section>
+  <section class="tutorial-module" id="html-module" aria-labelledby="htmlTitle">
+    <div class="tutorial-section-head">
+      <div class="section-label">MODULE 01</div>
+      <h2 id="htmlTitle">HTML: Structure and Meaning</h2>
+      <p class="tutorial-lede">
+        HTML is the foundation of a webpage. It tells the browser what each piece of content is, such as
+        a heading, paragraph, link, image, navigation area, article, form control, or table row.
+      </p>
+    </div>
 
-<div class="text-center mt-4">
-<a href="quiz.html" class="btn btn-primary">Go to Quiz</a>
-</div>
+    <div class="concept-grid" aria-label="HTML key concepts">
+      <article class="concept-card">
+        <h3>Document foundation</h3>
+        <p>Use <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> to give the page a reliable starting structure.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Content elements</h3>
+        <p>Use <code>&lt;h1&gt;</code>, paragraphs, <code>&lt;a&gt;</code> links, images with <code>alt</code>, and <code>&lt;em&gt;</code> for meaningful emphasis.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Semantic regions</h3>
+        <p>Use <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code> to describe layout purpose.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Lists and tables</h3>
+        <p>Lists group related points, while tables should be saved for row-and-column data such as schedules, scores, or comparisons.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Forms and labels</h3>
+        <p>Forms collect user input. Labels connect text to controls, and input types such as <code>radio</code> guide how users answer.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Head vs body</h3>
+        <p>The <code>&lt;head&gt;</code> stores metadata and links to resources; the <code>&lt;body&gt;</code> contains what users see and interact with.</p>
+      </article>
+    </div>
+
+    <article class="module-focus">
+      <h3>Learning focus</h3>
+      <ul>
+        <li>Start with one clear page structure before adding styling.</li>
+        <li>Choose elements based on meaning, not just how they look.</li>
+        <li>Use labels and alt text so the page works for more people and tools.</li>
+      </ul>
+    </article>
+
+    <div class="code-example">
+      <div class="code-heading">Example: semantic HTML page structure</div>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;!-- The title appears in the browser tab, not in the visible page body. --&gt;
+  &lt;title&gt;DevQuest Lesson&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;HTML Foundations&lt;/h1&gt;
+    &lt;nav aria-label="Lesson navigation"&gt;
+      &lt;a href="#css-module"&gt;Next: CSS&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Why structure matters&lt;/h2&gt;
+      &lt;p&gt;Use &lt;em&gt;semantic elements&lt;/em&gt; to make meaning clear.&lt;/p&gt;
+      &lt;img src="images/devquest-logo.svg" alt="DevQuest logo"&gt;
+    &lt;/article&gt;
+
+    &lt;label for="topicChoice"&gt;Choose one topic&lt;/label&gt;
+    &lt;input id="topicChoice" type="radio" name="topic"&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <div class="code-example">
+      <div class="code-heading">Example: form and table content</div>
+      <pre><code>&lt;!-- Labels help users and assistive technology understand each control. --&gt;
+&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Choose one quiz mode&lt;/legend&gt;
+
+    &lt;label for="modeHtml"&gt;
+      &lt;input id="modeHtml" type="radio" name="mode" value="html"&gt;
+      HTML practice
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;!-- Use tables for real tabular data, not for page layout. --&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Module&lt;/th&gt;
+    &lt;th&gt;Focus&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;HTML&lt;/td&gt;
+    &lt;td&gt;Structure and meaning&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    </div>
+
+    <article class="why-panel">
+      <h3>Why it matters</h3>
+      <p>
+        Semantic HTML is not just cleaner code. It helps screen readers, search tools, teammates, and future you
+        understand the page. When the structure is clear, styling and JavaScript can build on it without fragile guesswork.
+      </p>
+    </article>
+  </section>
+
+  <section class="tutorial-module" id="css-module" aria-labelledby="cssTitle">
+    <div class="tutorial-section-head">
+      <div class="section-label">MODULE 02</div>
+      <h2 id="cssTitle">CSS: Styling and Layout</h2>
+      <p class="tutorial-lede">
+        CSS controls how the HTML looks. It handles color, typography, spacing, layout, hover states,
+        responsive rules, and reusable visual patterns.
+      </p>
+    </div>
+
+    <div class="concept-grid" aria-label="CSS key concepts">
+      <article class="concept-card">
+        <h3>Selectors and reuse</h3>
+        <p><code>#intro</code> targets one id, <code>.card</code> targets reusable classes, and shared classes keep styles consistent.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Box model and spacing</h3>
+        <p><code>padding</code> is inside the border, <code>margin</code> is outside it, and <code>border-radius</code> rounds corners.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Layout and responsiveness</h3>
+        <p><code>flex</code> handles one-dimensional layouts, Grid handles rows and columns, and <code>@media</code> adapts to viewport size.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Pseudo-classes</h3>
+        <p><code>:hover</code> lets the interface respond visually when a pointer is over an element, which can make controls feel clearer.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Typography and color</h3>
+        <p>Readable font sizes, contrast, and consistent colors help users scan a page and understand what matters first.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Practical layering</h3>
+        <p>Positioned elements can overlap. <code>z-index</code> controls which layer appears above another when stacking matters.</p>
+      </article>
+    </div>
+
+    <article class="module-focus">
+      <h3>Learning focus</h3>
+      <ul>
+        <li>Use class selectors for design patterns that appear more than once.</li>
+        <li>Think in boxes: content, padding, border, and margin all affect spacing.</li>
+        <li>Keep layout rules responsive so the page remains readable on smaller screens.</li>
+      </ul>
+    </article>
+
+    <div class="code-example">
+      <div class="code-heading">Example: reusable CSS card pattern</div>
+      <pre><code>/* A reusable class keeps repeated content visually consistent. */
+.lesson-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover feedback helps users notice interactive or important areas. */
+.lesson-card:hover {
+  border-color: rgba(99, 102, 241, 0.52);
+  transform: translateY(-2px);
+}
+
+/* Grid creates a two-dimensional layout for multiple cards. */
+.lesson-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+    </div>
+
+    <div class="code-example">
+      <div class="code-heading">Example: selector types and readable text</div>
+      <pre><code>/* Element selector: affects every paragraph. */
+p {
+  line-height: 1.6;
+}
+
+/* Class selector: reusable across many cards. */
+.notice-card {
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.85);
+}
+
+/* ID selector: use sparingly for one unique element. */
+#lessonSummary {
+  border-left: 4px solid #6366f1;
+}
+
+/* Pseudo-class: provide feedback when the card is hovered. */
+.notice-card:hover {
+  border-color: #ec4899;
+}</code></pre>
+    </div>
+
+    <article class="why-panel">
+      <h3>Why it matters</h3>
+      <p>
+        Separating content from style keeps projects easier to change. HTML can focus on meaning, while CSS controls
+        presentation, spacing, and responsiveness from one place instead of scattering design decisions through the page.
+      </p>
+    </article>
+  </section>
+
+  <section class="tutorial-module" id="javascript-module" aria-labelledby="javascriptTitle">
+    <div class="tutorial-section-head">
+      <div class="section-label">MODULE 03</div>
+      <h2 id="javascriptTitle">JavaScript: Behavior and Feedback</h2>
+      <p class="tutorial-lede">
+        JavaScript lets the page react after it loads. It can listen for clicks, change DOM content,
+        validate forms, store small values, and fetch data from another file or public API.
+      </p>
+    </div>
+
+    <div class="concept-grid" aria-label="JavaScript key concepts">
+      <article class="concept-card">
+        <h3>Events</h3>
+        <p><code>DOMContentLoaded</code> waits for the document, <code>click</code> reacts to buttons, and <code>preventDefault()</code> can stop normal form submission.</p>
+      </article>
+      <article class="concept-card">
+        <h3>DOM updates</h3>
+        <p><code>querySelector()</code> finds an element, <code>addEventListener()</code> attaches behavior, and text or classes can change instantly.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Data and logic</h3>
+        <p><code>let</code> can be reassigned, <code>const</code> should not be, <code>===</code> checks value and type, JSON stores data, and <code>fetch()</code> returns a Promise.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Form validation</h3>
+        <p>JavaScript can check whether a user has answered required fields before allowing a form to submit.</p>
+      </article>
+      <article class="concept-card">
+        <h3>Local storage</h3>
+        <p><code>localStorage</code> stores small values in the browser, which is useful for attempt history or user preferences.</p>
+      </article>
+      <article class="concept-card">
+        <h3>AJAX requests</h3>
+        <p><code>fetch()</code> can load JSON from another file or public API without refreshing the whole page.</p>
+      </article>
+    </div>
+
+    <article class="module-focus">
+      <h3>Learning focus</h3>
+      <ul>
+        <li>Select the elements you need before trying to change them.</li>
+        <li>Use events to respond to user actions at the right moment.</li>
+        <li>Update the DOM carefully so the interface gives useful feedback without becoming noisy.</li>
+      </ul>
+    </article>
+
+    <div class="code-example">
+      <div class="code-heading">Example: DOM update from a button click</div>
+      <pre><code>// Wait until the HTML exists before selecting page elements.
+document.addEventListener("DOMContentLoaded", () =&gt; {
+  const button = document.querySelector("#demoButton");
+  const output = document.querySelector("#demoOutput");
+
+  // Use let because the counter changes after every click.
+  let clickCount = 0;
+
+  button.addEventListener("click", () =&gt; {
+    clickCount += 1;
+    output.textContent = `DOM update complete. Click count: ${clickCount}`;
+    output.classList.add("demo-active");
+  });
+});</code></pre>
+    </div>
+
+    <div class="code-example">
+      <div class="code-heading">Example: quiz-style validation and JSON loading</div>
+      <pre><code>// Stop a form from submitting until the answer is complete.
+form.addEventListener("submit", (event) =&gt; {
+  const selectedAnswer = form.querySelector("input[name='question']:checked");
+
+  if (!selectedAnswer) {
+    event.preventDefault();
+    message.textContent = "Choose an answer before submitting.";
+  }
+});
+
+// Load structured question data without hard-coding it into the page.
+fetch("data/questions.json")
+  .then((response) =&gt; response.json())
+  .then((questions) =&gt; {
+    localStorage.setItem("lastQuestionCount", String(questions.length));
+  });</code></pre>
+    </div>
+
+    <article class="why-panel">
+      <h3>Why it matters</h3>
+      <p>
+        Interactivity improves user experience because people get feedback at the moment they act. A quiz can show
+        validation, a button can reveal extra information, and a page can load JSON without forcing a full reload.
+      </p>
+    </article>
+  </section>
+
+  <section class="tutorial-demo" id="demo-module" aria-labelledby="demoTitle">
+    <div class="tutorial-section-head">
+      <div class="section-label">INTERACTIVE DEMO</div>
+      <h2 id="demoTitle">Foundation Practice Lab</h2>
+      <p class="tutorial-lede">
+        This lab connects the three tutorial modules. HTML gives the content a role, CSS changes the presentation,
+        and JavaScript updates the page in response to a click.
+      </p>
+    </div>
+
+    <div class="demo-learning-layout">
+      <article class="demo-context-card">
+        <h3>What to try</h3>
+        <p>
+          Use the controls on the right to see each layer of a webpage in action. The HTML demo changes the meaning
+          being described, the CSS demo changes the visual treatment, and the JavaScript demo updates text dynamically
+          without a page refresh.
+        </p>
+        <p class="card-muted mb-0">
+          This is the same pattern used in the quiz page: structured content, reusable styling, and event-driven behavior.
+        </p>
+      </article>
+
+      <div class="demo-surface" id="demoSurface" aria-label="Foundation practice lab">
+        <article class="lab-card">
+          <div class="lab-card-label">HTML structure</div>
+          <h3>Semantic Region Preview</h3>
+          <div class="semantic-preview" aria-label="Semantic layout preview">
+            <div class="semantic-region" data-region="header">
+              <strong>DevQuest Tutorial</strong>
+              <span>Page title and introductory banner</span>
+            </div>
+            <div class="semantic-region" data-region="nav">
+              <strong>Lesson links</strong>
+              <span>HTML | CSS | JavaScript</span>
+            </div>
+            <div class="semantic-preview-body">
+              <div class="semantic-region semantic-region-main" data-region="main">
+                <strong>Main lesson area</strong>
+                <span>The unique learning content for this page</span>
+              </div>
+              <div class="semantic-region semantic-region-article" data-region="article">
+                <strong>HTML module card</strong>
+                <span>A standalone lesson block with its own topic</span>
+              </div>
+            </div>
+            <div class="semantic-region" data-region="footer">
+              <strong>Page footer</strong>
+              <span>Copyright and closing information</span>
+            </div>
+          </div>
+          <div class="semantic-controls" aria-label="Semantic element controls">
+            <button type="button" class="semantic-control" data-region="header">header</button>
+            <button type="button" class="semantic-control" data-region="nav">nav</button>
+            <button type="button" class="semantic-control" data-region="main">main</button>
+            <button type="button" class="semantic-control" data-region="article">article</button>
+            <button type="button" class="semantic-control" data-region="footer">footer</button>
+          </div>
+          <p id="htmlDemoOutput" class="lab-output" aria-live="polite">
+            Current element: select a semantic region to inspect its role.
+          </p>
+          <p id="htmlDemoUseCase" class="lab-note" aria-live="polite">
+            Use case: choose an element based on what the content means before styling it.
+          </p>
+        </article>
+
+        <article class="lab-card">
+          <div class="lab-card-label">CSS presentation</div>
+          <h3>Style State Preview</h3>
+          <div class="css-demo-card" id="cssDemoTarget">
+            <strong>Reusable class demo</strong>
+            <span>Spacing, border, and accent colors can change without rewriting the HTML.</span>
+          </div>
+          <pre class="css-demo-code"><code id="cssDemoCode">.css-demo-card {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}</code></pre>
+          <p id="cssDemoExplanation" class="lab-note" aria-live="polite">
+            CSS state: default card styling with balanced spacing and a subtle border.
+          </p>
+          <button type="button" class="btn btn-outline-light" id="cssDemoButton">Toggle CSS State</button>
+        </article>
+
+        <article class="lab-card lab-card-primary">
+          <div class="lab-card-label">JavaScript behavior</div>
+          <h3>DOM Update Console</h3>
+          <div class="js-state-label" id="jsDemoState">State: waiting</div>
+          <p class="demo-output" id="demoOutput" aria-live="polite">
+            Mission console: waiting for your first command.
+          </p>
+          <p class="lab-note" id="jsDemoExplanation" aria-live="polite">
+            JavaScript is waiting for a button click, then it will update this card through the DOM.
+          </p>
+          <button type="button" class="btn btn-primary" id="demoButton">Run Demo Command</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="tutorial-cta text-center" id="quiz-cta" aria-labelledby="quizCtaTitle">
+    <div class="section-label">NEXT MISSION</div>
+    <h2 id="quizCtaTitle">Ready to test your knowledge?</h2>
+    <p>
+      You have followed the foundations in order. Start the quiz to check how HTML, CSS, and JavaScript work together.
+    </p>
+    <a href="quiz.html" class="btn btn-primary btn-lg tutorial-cta-button">Start Quiz</a>
+  </section>
+
+    </div>
+  </div>
 
 </main>
 
 <footer class="site-footer text-center py-3">
-<p class="mb-0">&copy; 2026 DevQuest</p>
+  <p class="mb-0">&copy; 2026 DevQuest</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -22,6 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetQuiz = document.getElementById("resetQuiz");
   const clearHistory = document.getElementById("clearHistory");
   const quizValidationMessage = document.getElementById("quizValidationMessage");
+  const quizProgressCard = document.getElementById("quizProgressCard");
+  const progressLabel = document.getElementById("progressLabel");
+  const answeredCount = document.getElementById("answeredCount");
+  const totalQuestions = document.getElementById("totalQuestions");
+  const progressFill = document.getElementById("progressFill");
 
   if (!quizForm || !quizContainer) return;
 
@@ -119,11 +124,29 @@ document.addEventListener("DOMContentLoaded", () => {
     return shuffle(pool).slice(0, mode.count);
   }
 
+  function setResultRewardPlaceholders() {
+    result.innerHTML = `
+      <div class="quiz-placeholder">
+        <strong>Result waiting</strong>
+        <p class="mb-0">Launch a quiz attempt to see your score path.</p>
+      </div>
+    `;
+
+    reward.innerHTML = `
+      <div class="quiz-placeholder">
+        <strong>Reward locked</strong>
+        <p class="mb-0">Submit a successful mission to unlock your reward.</p>
+      </div>
+    `;
+  }
+
   function clearFeedback() {
-    result.innerHTML = "";
-    reward.innerHTML = "";
+    setResultRewardPlaceholders();
     quizContainer.querySelectorAll(".quiz-question").forEach((questionCard) => {
       questionCard.classList.remove("question-unanswered");
+    });
+    quizContainer.querySelectorAll(".quiz-option-correct, .quiz-option-wrong").forEach((option) => {
+      option.classList.remove("quiz-option-correct", "quiz-option-wrong");
     });
   }
 
@@ -138,18 +161,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function updateProgress() {
+    const radioGroups = new Set();
+    quizContainer.querySelectorAll("input.quiz-input[type=\"radio\"][name]").forEach((input) => {
+      radioGroups.add(input.name);
+    });
+
+    const total = radioGroups.size;
+    const answered = [...radioGroups].filter((groupName) => {
+      const safeGroupName = window.CSS && CSS.escape ? CSS.escape(groupName) : groupName;
+      return Boolean(quizForm.querySelector(`input.quiz-input[name="${safeGroupName}"]:checked`));
+    }).length;
+    const percentage = total > 0 ? (answered / total) * 100 : 0;
+
+    if (answeredCount) answeredCount.textContent = answered;
+    if (totalQuestions) totalQuestions.textContent = total;
+    if (progressFill) progressFill.style.width = `${percentage}%`;
+
+    if (progressLabel) {
+      if (answered === 0) {
+        progressLabel.textContent = "Ready for launch...";
+      } else if (answered === total) {
+        progressLabel.textContent = "Mission Ready";
+      } else {
+        progressLabel.textContent = "Mission Progress";
+      }
+    }
+
+    if (quizProgressCard) {
+      quizProgressCard.classList.toggle("progress-idle", answered === 0);
+    }
+  }
+
   function renderQuestions() {
     if (currentQuestions.length === 0) {
       quizContainer.innerHTML = "";
+      updateProgress();
       setStatus(`No questions are available for ${quizModes[activeMode].label}. Check the topic values in data/questions.json.`, "error");
       return;
     }
 
     quizContainer.innerHTML = currentQuestions.map((question, questionIndex) => {
       const options = question.options.map((option, optionIndex) => `
-        <label class="quiz-option">
-          <input type="radio" name="question-${questionIndex}" value="${optionIndex}">
-          <span>${escapeHTML(option)}</span>
+        <label class="quiz-option" data-option-index="${optionIndex}">
+          <input class="quiz-input" type="radio" name="question-${questionIndex}" value="${optionIndex}">
+          <span class="quiz-code-badge" aria-hidden="true">&lt;/&gt;</span>
+          <span class="quiz-option-text">${escapeHTML(option)}</span>
         </label>
       `).join("");
 
@@ -164,6 +221,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </fieldset>
       `;
     }).join("");
+
+    updateProgress();
   }
 
   function loadMode(modeKey) {
@@ -217,21 +276,78 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
   }
 
-  async function fetchReward() {
-    reward.innerHTML = "<p class=\"card-muted mb-0\">Fetching your reward...</p>";
+  function updateQuestionFeedback(questionIndex) {
+    const question = currentQuestions[questionIndex];
+    const checkedAnswer = quizForm.querySelector(`input[name="question-${questionIndex}"]:checked`);
+    const questionCard = quizContainer.querySelector(`[data-question-index="${questionIndex}"]`);
+
+    if (!question || !checkedAnswer || !questionCard) return;
+
+    clearQuestionFeedback(questionCard);
+
+    const selectedOption = checkedAnswer.closest(".quiz-option");
+    if (!selectedOption) return;
+
+    if (Number(checkedAnswer.value) === question.answer) {
+      selectedOption.classList.add("quiz-option-correct");
+    } else {
+      selectedOption.classList.add("quiz-option-wrong");
+    }
+  }
+
+  function clearQuestionFeedback(questionCard) {
+    questionCard.querySelectorAll(".quiz-option-correct, .quiz-option-wrong").forEach((option) => {
+      option.classList.remove("quiz-option-correct", "quiz-option-wrong");
+    });
+  }
+
+  function showAnswerFeedback() {
+    currentQuestions.forEach((question, index) => {
+      updateQuestionFeedback(index);
+    });
+  }
+
+  function getRewardTier(percentage) {
+    if (percentage >= 90) return "DevQuest Master \u{1F680}";
+    if (percentage >= 70) return "Skilled Builder";
+    if (percentage >= 50) return "Rising Developer";
+    return "Beginner Explorer";
+  }
+
+  function renderRewardCard(tier, message, type = "success") {
+    reward.innerHTML = `
+      <div class="reward-card reward-card-${type}">
+        <div class="reward-tier-label">Achievement Tier</div>
+        <h3>${escapeHTML(tier)}</h3>
+        <p class="reward-quote mb-0">${escapeHTML(message)}</p>
+      </div>
+    `;
+  }
+
+  async function fetchReward(percentage) {
+    const tier = getRewardTier(percentage);
+    const rewardApiUrl = "https://dummyjson.com/quotes/random";
+    renderRewardCard(tier, "Fetching your reward quote...", "loading");
+    console.log("Reward API URL:", rewardApiUrl);
 
     try {
-      const response = await fetch("https://api.adviceslip.com/advice", { cache: "no-store" });
+      const response = await fetch(rewardApiUrl, { cache: "no-store" });
+      console.log("Reward API response status:", response.status);
+
       if (!response.ok) throw new Error("Reward API failed");
 
       const data = await response.json();
-      const advice = data && data.slip && data.slip.advice
-        ? data.slip.advice
-        : "Keep building. Your next version will be even stronger.";
+      console.log("Reward API parsed response:", data);
 
-      reward.innerHTML = `<p class="mb-0"><strong>Reward unlocked:</strong> ${escapeHTML(advice)}</p>`;
+      const quote = data && data.quote ? data.quote : "";
+      const author = data && data.author ? ` - ${data.author}` : "";
+
+      if (!quote) throw new Error("Reward quote was empty");
+
+      renderRewardCard(tier, `${quote}${author}`, "success");
     } catch (error) {
-      reward.innerHTML = "<p class=\"card-muted mb-0\">Reward could not be fetched right now, but your pass still counts.</p>";
+      console.error("Reward API request failed:", error);
+      renderRewardCard(tier, "Reward quote could not be retrieved right now, but your achievement still counts.", "fallback");
     }
   }
 
@@ -243,9 +359,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const modeLabel = quizModes[activeMode].label;
 
     result.innerHTML = `
-      <p class="mb-1"><strong>Score:</strong> ${score}/${total}</p>
-      <p class="mb-1"><strong>Percentage:</strong> ${percentage}%</p>
-      <p class="mb-0"><strong>Status:</strong> <span class="${statusClass}">${passed ? "Pass" : "Try Again"}</span></p>
+      <div class="result-score-card">
+        <div class="result-score-copy">
+          <p class="mb-1"><strong>Score:</strong> ${score}/${total}</p>
+          <p class="mb-1"><strong>Percentage:</strong> ${percentage}%</p>
+          <p class="mb-0"><strong>Outcome:</strong> <span class="${statusClass}">${passed ? "Successful" : "Unsuccessful"}</span></p>
+        </div>
+        <div
+          class="result-progress-track"
+          role="progressbar"
+          aria-label="Quiz score percentage"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="${percentage}"
+          style="--score-percent: ${percentage}%;"
+        >
+          <div class="result-progress-fill"></div>
+          <span class="result-rocket" aria-hidden="true">&#128640;</span>
+        </div>
+      </div>
     `;
 
     saveAttempt({
@@ -260,9 +392,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHistory();
 
     if (passed) {
-      fetchReward();
+      fetchReward(percentage);
     } else {
-      reward.innerHTML = "<p class=\"card-muted mb-0\">Reach 70% to unlock a reward.</p>";
+      const tier = getRewardTier(percentage);
+      renderRewardCard(tier, "Reach 70% to unlock a reward quote.", "locked");
     }
   }
 
@@ -310,13 +443,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  quizContainer.addEventListener("change", () => {
+  quizContainer.addEventListener("change", (event) => {
     hasStarted = true;
+    updateProgress();
     if (allQuestionsAnswered()) {
       setValidationMessage(false);
       quizContainer.querySelectorAll(".quiz-question").forEach((questionCard) => {
         questionCard.classList.remove("question-unanswered");
       });
+    }
+
+    if (hasSubmitted && event.target.classList.contains("quiz-input")) {
+      const questionCard = event.target.closest(".quiz-question");
+      if (!questionCard) return;
+
+      clearQuestionFeedback(questionCard);
     }
   });
 
@@ -333,6 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setValidationMessage(false);
     const score = calculateScore();
     hasSubmitted = true;
+    showAnswerFeedback();
     showResult(score);
     setStatus("Quiz submitted. Review your result below.", "success");
   });
@@ -366,5 +508,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   renderHistory();
+  setResultRewardPlaceholders();
   loadQuestions();
 });
