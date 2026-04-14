@@ -1,70 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Reflection | DevQuest</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Reflection | DevQuest</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="reflection-page">
 
 <header class="site-header">
-<nav class="navbar navbar-expand-lg navbar-dark custom-nav" aria-label="Main navigation">
-<div class="container">
-<a class="navbar-brand logo-link" href="index.html">
-<img src="images/devquest-logo.svg" alt="DevQuest logo" class="devquest-logo">
-</a>
+  <nav class="navbar navbar-expand-lg navbar-dark custom-nav" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand logo-link" href="index.html">
+        <img src="images/devquest-logo.svg" alt="DevQuest logo" class="devquest-logo">
+      </a>
 
-<button
-class="navbar-toggler"
-type="button"
-data-bs-toggle="collapse"
-data-bs-target="#mainNav"
-aria-controls="mainNav"
-aria-expanded="false"
-aria-label="Toggle navigation"
->
-<span class="navbar-toggler-icon"></span>
-</button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<div class="collapse navbar-collapse" id="mainNav">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
-<li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
-<li class="nav-item"><a class="nav-link active" href="reflection.html" aria-current="page">AI Reflection</a></li>
-<li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-</ul>
-</div>
-</div>
-</nav>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link active" href="reflection.html" aria-current="page">AI Reflection</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <main class="container py-5">
 
-<section class="page-intro">
-<h1>AI Reflection</h1>
-</section>
+  <!-- Reflection Intro Card -->
+  <section class="page-intro">
+    <div class="section-label">MISSION 3</div>
+    <h1>AI Reflection Log</h1>
+    <p class="lead mb-0">
+      This page documents how AI tools were used during the development of DevQuest and critically evaluates
+      their usefulness, limitations, risks and ethical implications in a coding project.
+    </p>
+  </section>
 
-<section class="content-card mt-4">
-<h2>Use Case 1</h2>
-<p>Prompt: ...</p>
-<p>Output: ...</p>
-<p>Fix: ...</p>
-</section>
+  <!-- Overview of How AI Was Used -->
+  <section class="content-card mt-4">
+    <div class="section-label">Overview</div>
+    <h2>How AI was used in this project</h2>
+    <p>
+      Large language models were used throughout the DevQuest project to support planning, interface design,
+      debugging and feature implementation. AI was especially helpful in generating starter structures for
+      HTML pages, suggesting CSS layout improvements and helping reason through the logic required for the
+      quiz page, which was the most technically demanding part of the assignment.
+    </p>
+    <p>
+      However, AI outputs were not accepted blindly. In many cases, the generated solutions needed revision
+      because they were either too generic, did not fully fit the project constraints or failed to account
+      for browser-specific issues that appeared during testing. This meant AI was most useful when treated as
+      a drafting and support tool rather than a source of final answers.
+    </p>
+  </section>
 
-<section class="content-card mt-4">
-<h2>Use Case 2</h2>
-<p>Prompt: ...</p>
-<p>Output: ...</p>
-<p>Fix: ...</p>
-</section>
+  <!-- Specific AI Usage Examples -->
+  <section class="content-card mt-4">
+    <div class="section-label">Examples</div>
+    <h2>Selected examples of AI use</h2>
+
+    <div class="reflection-entry">
+      <h3>Example 1 - Initial page structure</h3>
+      <p><strong>Prompt used:</strong></p>
+      <pre><code>Give me a clean base HTML structure for the required pages in a static web project with shared navigation and styling.</code></pre>
+
+      <p><strong>What the AI produced:</strong></p>
+      <p>
+        AI generated starter HTML page structures and suggested a shared layout approach for navigation,
+        containers and reusable styling.
+      </p>
+
+      <p><strong>What I changed:</strong></p>
+      <p>
+        I adapted the structure to fit my actual project theme, file names and page content. I also
+        refined the layout so the site felt more coherent and aligned with the DevQuest identity.
+      </p>
+
+      <p><strong>Limitation noticed:</strong></p>
+      <p class="mb-0">
+        The generated structure was helpful as a draft, but it was generic. It still required design
+        decisions and editing to make it suitable for the assignment.
+      </p>
+    </div>
+
+    <hr class="soft-divider">
+
+    <div class="reflection-entry">
+      <h3>Example 2 - Loading quiz questions from JSON</h3>
+      <p><strong>Prompt used:</strong></p>
+      <pre><code>How can I load quiz questions from a local JSON file and render them dynamically in JavaScript for my quiz page?</code></pre>
+
+      <p><strong>What the AI produced:</strong></p>
+      <p>
+        AI suggested using fetch() to load the JSON file and then dynamically generate the quiz questions in the DOM.
+      </p>
+
+      <p><strong>What I changed:</strong></p>
+      <p>
+        I adapted the generated logic to fit my quiz structure, question randomisation, validation flow and scoring system.
+        I also integrated it with my existing JavaScript file and page structure rather than copying the solution directly.
+      </p>
+
+      <p><strong>Limitation noticed:</strong></p>
+      <p class="mb-0">
+        The original suggestion did not fully account for the browser error I faced when opening the project locally.
+        Because the quiz questions were stored in a JSON file, the browser did not always allow fetch() to load them
+        correctly from the local file system. This required debugging, understanding why the request failed and testing
+        the project in a proper local development environment.
+      </p>
+    </div>
+
+    <hr class="soft-divider">
+
+    <div class="reflection-entry">
+      <h3>Example 3 - Choosing a color palette</h3>
+      <p><strong>Prompt used:</strong></p>
+      <pre><code>What factors should I consider when choosing a dark theme color palette for a web project to ensure it looks polished and remains easy to read?</code></pre>
+
+      <p><strong>What the AI produced:</strong></p>
+      <p>
+        AI suggested considering contrast, text readability, accent color restraint, consistent surface colors and how
+        buttons, cards and highlights would appear across the full interface.
+      </p>
+
+      <p><strong>What I changed:</strong></p>
+      <p>
+        I used those factors to review the DevQuest theme rather than treating the response as a finished palette. I kept
+        the dark space-inspired background, then adjusted accent colors and card contrast so the tutorial, quiz, reflection,
+        and CV pages felt consistent and stayed readable.
+      </p>
+
+      <p><strong>Limitation noticed:</strong></p>
+      <p class="mb-0">
+        The advice was useful as a checklist, but it could not show whether the colors would actually feel balanced in my
+        layout. I still needed to test the palette on the real pages because some accents that seemed appropriate in theory
+        became too strong when repeated across cards, buttons and headings.
+      </p>
+    </div>
+
+    <hr class="soft-divider">
+
+    <div class="reflection-entry">
+      <h3>Example 4 - Designing the favicon</h3>
+      <p><strong>Prompt used:</strong></p>
+      <pre><code>Create favicon ideas for DevQuest. The site is about learning web development, with a coding and rocket theme. I want the favicon to feel simple, memorable and relevant to my personal project branding.</code></pre>
+
+      <p><strong>What the AI produced:</strong></p>
+      <p>
+        AI suggested several icon directions combining coding symbols, rocket imagery and minimal branding concepts.
+      </p>
+
+      <p><strong>What I changed:</strong></p>
+      <p>
+        I refined the idea based on the project identity and selected a simpler direction that would remain recognisable
+        at very small sizes. I focused on clarity and branding rather than detail.
+      </p>
+
+      <p><strong>Limitation noticed:</strong></p>
+      <p class="mb-0">
+        AI-generated design ideas were helpful for exploration, but they still required personal judgment to choose
+        something visually clear original and suitable as a favicon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Critical Evaluation of AI Reliability and Risks -->
+  <section class="content-card mt-4">
+    <div class="section-label">Critical Evaluation</div>
+    <h2>Reliability, risks and limitations</h2>
+    <p>
+      AI was useful for quickly creating first drafts, but the work still depended on testing and judgement. The clearest
+      technical example was the quiz page, where loading questions from a local JSON file caused browser-specific errors
+      when the project was opened directly from the file system.
+    </p>
+    <p>
+      This showed that AI-generated code can look correct while still failing in the actual browser environment. I had to
+      debug the failed JSON request, understand why fetch() behaves differently with local files and test the quiz in a
+      proper local development environment instead of assuming the first solution was complete.
+    </p>
+    <p>
+      AI design suggestions also needed practical testing. Some color palette and favicon ideas sounded suitable in text,
+      but they had to be adjusted once applied to the real DevQuest interface so the pages stayed readable, consistent,
+      and not overly distracting.
+    </p>
+  </section>
+
+  <!-- Ethical Considerations -->
+  <section class="content-card mt-4">
+    <div class="section-label">Ethical Considerations</div>
+    <h2>Responsible use of AI</h2>
+    <p>
+      The use of AI in this project raises important questions about authorship, understanding and academic integrity.
+      In this project, AI was used as a support tool rather than a substitute for learning. All generated code and writing
+      were reviewed, edited and tested before being incorporated into the project.
+    </p>
+    <p>
+      This process also made it clear that relying on AI without understanding the output would be risky. In several cases,
+      such as browser crashes, reward API failures and quiz filtering issues, a superficial use of AI would have produced
+      a broken submission. Ethical use therefore required active verification, personal judgement and responsibility for
+      the final result.
+    </p>
+  </section>
+
+  <!-- Final Reflection Summary -->
+  <section class="content-card mt-4">
+    <div class="section-label">Conclusion</div>
+    <h2>Final Reflection</h2>
+    <p>
+      Overall, AI significantly supported the development of DevQuest by accelerating ideation, drafting content and
+      suggesting possible technical solutions. At the same time, the project demonstrated that AI is not a replacement
+      for reasoning, debugging or understanding assignment requirements. Its outputs were most useful when treated as
+      a starting point that needed to be tested, questioned and refined.
+    </p>
+    <p class="mb-0">
+      The experience showed that AI can enhance software development productivity, but only when combined with critical
+      thinking and responsible use. In this project, the final quality of the work depended not on AI alone, but on how
+      effectively its suggestions were evaluated and improved.
+    </p>
+  </section>
 
 </main>
 
 <footer class="site-footer text-center py-3">
-<p class="mb-0">&copy; 2026 DevQuest</p>
+  <p class="mb-0">&copy; 2026 DevQuest</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

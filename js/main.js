@@ -1,62 +1,20 @@
 function initialiseDevQuestPage() {
+  // These selectors are shared across pages; each feature only runs if its elements exist.
   const demoButton = document.getElementById("demoButton");
   const demoOutput = document.getElementById("demoOutput");
-  const htmlDemoOutput = document.getElementById("htmlDemoOutput");
-  const htmlDemoUseCase = document.getElementById("htmlDemoUseCase");
-  const semanticControls = document.querySelectorAll(".semantic-control");
-  const semanticRegions = document.querySelectorAll(".semantic-region");
   const cssDemoButton = document.getElementById("cssDemoButton");
   const cssDemoTarget = document.getElementById("cssDemoTarget");
   const cssDemoCode = document.getElementById("cssDemoCode");
   const cssDemoExplanation = document.getElementById("cssDemoExplanation");
   const jsDemoState = document.getElementById("jsDemoState");
   const jsDemoExplanation = document.getElementById("jsDemoExplanation");
-
-  // Tutorial HTML lab: only runs when the semantic preview controls exist.
-  if (semanticControls.length > 0 && semanticRegions.length > 0 && htmlDemoOutput && htmlDemoUseCase) {
-    const htmlExamples = {
-      header: {
-        role: "Current element: <header> - introductory content for a page or section.",
-        useCase: "Use case: place the site logo, page title, or opening lesson heading where users expect the page to begin."
-      },
-      nav: {
-        role: "Current element: <nav> - a group of links used to move through the site.",
-        useCase: "Use case: group lesson links, menu items, or page shortcuts so users can find movement controls quickly."
-      },
-      main: {
-        role: "Current element: <main> - the unique content area of this page.",
-        useCase: "Use case: wrap the central tutorial content in <main> so assistive tools can skip repeated navigation."
-      },
-      article: {
-        role: "Current element: <article> - a standalone content block such as a lesson or post.",
-        useCase: "Use case: use <article> for a lesson card, blog post, or independent project summary that could stand on its own."
-      },
-      footer: {
-        role: "Current element: <footer> - closing information for a page or section.",
-        useCase: "Use case: place copyright text, source notes, or closing navigation at the end of a page."
-      }
-    };
-
-    semanticControls.forEach((control) => {
-      control.addEventListener("click", () => {
-        const selectedRegion = control.dataset.region;
-        const example = htmlExamples[selectedRegion];
-
-        if (!example) return;
-
-        semanticControls.forEach((item) => {
-          item.classList.toggle("semantic-control-active", item === control);
-        });
-        semanticRegions.forEach((region) => {
-          region.classList.toggle("semantic-region-active", region.dataset.region === selectedRegion);
-        });
-
-        htmlDemoOutput.textContent = example.role;
-        htmlDemoUseCase.textContent = example.useCase;
-        htmlDemoOutput.classList.add("lab-output-active");
-      });
-    });
-  }
+  const htmlPlaygroundInput = document.getElementById("htmlPlaygroundInput");
+  const cssPlaygroundInput = document.getElementById("cssPlaygroundInput");
+  const jsPlaygroundInput = document.getElementById("jsPlaygroundInput");
+  const runPlaygroundButton = document.getElementById("runPlaygroundButton");
+  const resetPlaygroundButton = document.getElementById("resetPlaygroundButton");
+  const codePlaygroundFrame = document.getElementById("codePlaygroundFrame");
+  const playgroundStatus = document.getElementById("playgroundStatus");
 
   // Tutorial CSS lab: only runs when the style switcher elements exist.
   if (cssDemoButton && cssDemoTarget && cssDemoCode && cssDemoExplanation) {
@@ -138,9 +96,62 @@ function initialiseDevQuestPage() {
     });
   }
 
+  // Tutorial code playground: renders user HTML/CSS/JS inside a sandboxed iframe.
+  if (
+    htmlPlaygroundInput &&
+    cssPlaygroundInput &&
+    jsPlaygroundInput &&
+    runPlaygroundButton &&
+    resetPlaygroundButton &&
+    codePlaygroundFrame &&
+    playgroundStatus
+  ) {
+    const starterCode = {
+      html: htmlPlaygroundInput.value,
+      css: cssPlaygroundInput.value,
+      js: jsPlaygroundInput.value
+    };
+
+    const renderCodePlayground = () => {
+      const safeScript = jsPlaygroundInput.value.replace(/<\/script/gi, "<\\/script");
+
+      codePlaygroundFrame.srcdoc = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+${cssPlaygroundInput.value}
+  </style>
+</head>
+<body>
+${htmlPlaygroundInput.value}
+  <script>
+${safeScript}
+  <\/script>
+</body>
+</html>`;
+
+      const now = new Date();
+      playgroundStatus.textContent = `Output updated at ${now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}.`;
+    };
+
+    runPlaygroundButton.addEventListener("click", renderCodePlayground);
+
+    resetPlaygroundButton.addEventListener("click", () => {
+      htmlPlaygroundInput.value = starterCode.html;
+      cssPlaygroundInput.value = starterCode.css;
+      jsPlaygroundInput.value = starterCode.js;
+      renderCodePlayground();
+    });
+
+    renderCodePlayground();
+  }
+
   const toggleProjectDetails = document.getElementById("toggleProjectDetails");
   const projectDetails = document.getElementById("projectDetails");
 
+  // CV page project button: toggles the hidden project highlights panel.
   if (toggleProjectDetails && projectDetails) {
     toggleProjectDetails.addEventListener("click", () => {
       const isHidden = projectDetails.classList.contains("hidden");
@@ -152,9 +163,19 @@ function initialiseDevQuestPage() {
     });
   }
 
+  const revealCandidates = document.querySelectorAll(
+    ".reveal-section, main > .hero-section, main > .page-intro, main > .content-card, .feature-card, .tutorial-module, .tutorial-demo, .tutorial-cta"
+  );
+
+  // Adds reveal behavior consistently to cards/sections even if the HTML did not include the class.
+  revealCandidates.forEach((section) => {
+    section.classList.add("reveal-section");
+  });
+
   const revealSections = document.querySelectorAll(".reveal-section");
   const skillFills = document.querySelectorAll(".skill-fill");
 
+  // IntersectionObserver starts animations only when the section scrolls into view.
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
@@ -173,6 +194,7 @@ function initialiseDevQuestPage() {
 
     revealSections.forEach((section) => observer.observe(section));
   } else {
+    // Fallback for older browsers: show sections and skill bars immediately.
     revealSections.forEach((section) => section.classList.add("is-visible"));
     skillFills.forEach((bar) => {
       const width = bar.dataset.width || "0%";
@@ -181,6 +203,7 @@ function initialiseDevQuestPage() {
   }
 }
 
+// Start after the DOM exists; if it already exists, run immediately.
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initialiseDevQuestPage);
 } else {

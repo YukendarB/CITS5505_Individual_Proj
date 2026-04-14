@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Main quiz settings used throughout the page.
   const PASS_THRESHOLD = 70;
   const STORAGE_KEY = "devquestQuizAttempts";
 
+  // Each mode controls the topic filter and number of questions rendered.
   const quizModes = {
     html: { label: "HTML Quiz", topic: "html", count: 5 },
     css: { label: "CSS Quiz", topic: "css", count: 5 },
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let hasStarted = false;
   let hasSubmitted = false;
 
+  // Fisher-Yates shuffle so each quiz attempt gets a fresh question order.
   function shuffle(items) {
     const shuffled = [...items];
 
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quizStatus.className = `quiz-status quiz-status-${type}`;
   }
 
+  // Attempt history is stored locally so the user can leave and return later.
   function getAttempts() {
     try {
       return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -103,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     history.innerHTML = `<ul class="attempt-list mb-0">${listItems}</ul>`;
   }
 
+  // Mixed mode pulls from all tutorial topics; single modes filter by topic.
   function getQuestionsForMode(modeKey) {
     const mode = quizModes[modeKey];
 
@@ -161,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Updates the sticky progress card as users answer each radio group.
   function updateProgress() {
     const radioGroups = new Set();
     quizContainer.querySelectorAll("input.quiz-input[type=\"radio\"][name]").forEach((input) => {
@@ -193,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Builds question markup dynamically from the JSON question data.
   function renderQuestions() {
     if (currentQuestions.length === 0) {
       quizContainer.innerHTML = "";
@@ -225,6 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateProgress();
   }
 
+  // Resets the UI and loads the question set for the selected quiz mode.
   function loadMode(modeKey) {
     activeMode = quizModes[String(modeKey || "").trim().toLowerCase()]
       ? String(modeKey || "").trim().toLowerCase()
@@ -248,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setStatus(`${mode.label} loaded. Choose one answer for each question.`, "info");
   }
 
+  // Checks every rendered question before allowing the quiz to submit.
   function validateAnswers() {
     let isValid = true;
 
@@ -276,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
   }
 
+  // Highlights selected answers after submission so the user gets feedback.
   function updateQuestionFeedback(questionIndex) {
     const question = currentQuestions[questionIndex];
     const checkedAnswer = quizForm.querySelector(`input[name="question-${questionIndex}"]:checked`);
@@ -324,6 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  // Reward quotes come from an API; fallback text keeps the page useful if it fails.
   async function fetchReward(percentage) {
     const tier = getRewardTier(percentage);
     const rewardApiUrl = "https://dummyjson.com/quotes/random";
@@ -351,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Renders the final score, saves the attempt and decides whether to unlock a reward.
   function showResult(score) {
     const total = currentQuestions.length;
     const percentage = Math.round((score / total) * 100);
@@ -399,6 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Fetch is the preferred loader; XMLHttpRequest is a fallback for stricter local file cases.
   function loadQuestionData() {
     return fetch("data/questions.json", { cache: "no-store" })
       .then((response) => {
@@ -443,6 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Any answer change updates progress and clears old validation warnings.
   quizContainer.addEventListener("change", (event) => {
     hasStarted = true;
     updateProgress();
@@ -461,6 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Main submit handler: validate, score, show answer feedback and save the attempt.
   quizForm.addEventListener("submit", (event) => {
     event.preventDefault();
     clearFeedback();
@@ -493,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Mode buttons reload the quiz with a different topic filter.
   modeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const modeKey = String(button.dataset.mode || "").trim().toLowerCase();
@@ -500,6 +516,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Warn users before leaving if they started but did not submit an attempt.
   window.addEventListener("beforeunload", (event) => {
     if (!hasStarted || hasSubmitted) return;
 

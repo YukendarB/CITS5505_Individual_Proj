@@ -17,9 +17,7 @@
 </head>
 <body class="home-page">
 
-  <!-- =========================
-       NAVBAR
-  ========================== -->
+  <!-- NAVBAR -->
   <header class="site-header">
     <nav class="navbar navbar-expand-lg navbar-dark custom-nav" aria-label="Main navigation">
       <div class="container">
@@ -62,9 +60,7 @@
     </nav>
   </header>
 
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
+  <!-- MAIN CONTENT -->
   <main class="container py-5">
 
     <!-- HERO -->
@@ -76,8 +72,8 @@
       </h1>
 
       <p class="hero-subtitle">
-        A guided journey through HTML, CSS, and JavaScript. Learn key concepts,
-        test your knowledge, reflect on your development process, and present your skills.
+        A guided journey through HTML, CSS and JavaScript. Learn key concepts,
+        test your knowledge, reflect on your development process and present your skills.
       </p>
 
       <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
@@ -86,67 +82,63 @@
       </div>
     </section>
 
-    <!-- FEATURE / MISSION CARDS -->
-    <section class="row g-4 mt-5" aria-label="DevQuest sections">
-
-      <!-- Tutorial -->
-      <div class="col-md-6 col-lg-3">
-        <div class="feature-card h-100">
-          <div class="section-label">Mission 1</div>
-          <h2>Tutorial</h2>
-          <p>
-            Learn the foundations of HTML, CSS, and JavaScript through structured explanations and examples.
-          </p>
+    <!-- PAGE FLOW CARD -->
+    <section class="content-card mt-5" aria-labelledby="flow-title">
+      <div class="section-label">Quest Map</div>
+      <h2 id="flow-title">Choose Your DevQuest Mission</h2>
+      <p>
+        Start with the Tutorial to build the foundations, move into the Quiz to check your understanding,
+        review the AI Reflection to see how the project was developed, then finish with the CV page for the
+        professional profile behind the work.
+      </p>
+      <div class="row g-3 mt-2">
+        <div class="col-md-6 col-lg-3">
+          <a class="feature-card mission-card-link h-100" href="tutorial.html">
+            <div class="section-label">Tutorial</div>
+            <h2>Mission 1</h2>
+            <p>
+              Learn the foundations of HTML, CSS and JavaScript through structured explanations and examples.
+            </p>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <a class="feature-card mission-card-link h-100" href="quiz.html">
+            <div class="section-label">Quiz</div>
+            <h2>Mission 2</h2>
+            <p>
+              Test your knowledge with dynamic questions, instant scoring and performance tracking.
+            </p>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <a class="feature-card mission-card-link h-100" href="reflection.html">
+            <div class="section-label">AI Reflection</div>
+            <h2>Mission 3</h2>
+            <p>
+              Analyse how AI supported development and evaluate its reliability and limitations.
+            </p>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <a class="feature-card mission-card-link h-100" href="cv.html">
+            <div class="section-label">CV</div>
+            <h2>Mission 4</h2>
+            <p>
+              Explore a professional profile showcasing skills, projects and personal achievements.
+            </p>
+          </a>
         </div>
       </div>
-
-      <!-- Quiz -->
-      <div class="col-md-6 col-lg-3">
-        <div class="feature-card h-100">
-          <div class="section-label">Mission 2</div>
-          <h2>Quiz</h2>
-          <p>
-            Test your knowledge with dynamic questions, instant scoring, and performance tracking.
-          </p>
-        </div>
-      </div>
-
-      <!-- AI Reflection -->
-      <div class="col-md-6 col-lg-3">
-        <div class="feature-card h-100">
-          <div class="section-label">Mission 3</div>
-          <h2>AI Reflection</h2>
-          <p>
-            Analyse how AI supported development and evaluate its reliability and limitations.
-          </p>
-        </div>
-      </div>
-
-      <!-- CV -->
-      <div class="col-md-6 col-lg-3">
-        <div class="feature-card h-100">
-          <div class="section-label">Mission 4</div>
-          <h2>CV</h2>
-          <p>
-            Explore a professional profile showcasing skills, projects, and personal achievements.
-          </p>
-        </div>
-      </div>
-
     </section>
 
   </main>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
   <footer class="site-footer text-center py-3">
     <p class="mb-0">&copy; 2026 DevQuest</p>
   </footer>
 
-  <!-- =========================
-       SCRIPTS
-  ========================== -->
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 

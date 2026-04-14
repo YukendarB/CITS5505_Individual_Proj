@@ -44,75 +44,84 @@
 
 <main class="container py-5">
 
+  <!-- CV Intro Card -->
   <section class="page-intro reveal-section">
-    <div class="section-label">Professional Profile</div>
+    <div class="section-label">MISSION 4</div>
     <h1>Curriculum Vitae</h1>
     <p class="lead mb-0">
-      A professional overview of my academic background, technical skills, experience, and projects,
+      A professional overview of my academic background, technical skills, experience and projects,
       presented as part of the DevQuest web application.
     </p>
   </section>
 
+  <!-- Author Snapshot and Contact Details -->
   <section class="content-card mt-4 reveal-section">
     <div class="row g-4 align-items-center">
       <div class="col-md-4 text-center">
-        <img
-          src="images/profile-placeholder.svg"
-          alt="Profile photograph placeholder"
-          class="img-fluid profile-image cv-profile-image"
-        >
+        <!-- Replace this src with your uploaded profile photo when it is ready. -->
+        <div class="cv-profile-frame">
+          <img
+            src="images/yukendar-profile.jpeg"
+            alt="Profile photograph of Yukendar Babu Naidu"
+            class="img-fluid profile-image cv-profile-image"
+            onerror="this.hidden = true; this.nextElementSibling.hidden = false;"
+          >
+          <div class="cv-profile-fallback" hidden>Yukendar Babu Naidu</div>
+        </div>
       </div>
 
       <div class="col-md-8">
         <div class="section-label">Author Snapshot</div>
-        <h2 class="mb-3">Lakshmi Nitya Tirunala</h2>
+        <h2 class="mb-3">Yukendar Babu Naidu</h2>
 
         <div class="cv-contact-grid">
-          <p><strong>Email:</strong> your-email@example.com</p>
-          <p><strong>Phone:</strong> Placeholder</p>
-          <p><strong>LinkedIn:</strong> Placeholder</p>
+          <p><strong>Student ID:</strong> 24781111</p>
+          <p><strong>Email:</strong> yukendar.naidu@student.uwa.edu.au</p>
+          <p><strong>Phone:</strong> +61 4XX XXX XXX</p>
+          <p><strong>LinkedIn:</strong> linkedin.com/in/yukendar-naidu</p>
           <p><strong>Location:</strong> Perth, WA</p>
         </div>
 
         <p class="mb-0 card-muted">
-          I am a motivated and detail-oriented Computer Science graduate currently pursuing a Master of
-          Information Technology at the University of Western Australia. I enjoy building practical digital
-          solutions that combine clean design, usability, and interactive front-end development.
+          Computer Science graduate currently pursuing a Master of Information Technology at the University
+          of Western Australia, with a strong interest in web development, front-end interaction and practical
+          software projects that solve real user needs.
         </p>
       </div>
     </div>
   </section>
 
+  <!-- Professional Summary -->
   <section class="content-card mt-4 reveal-section">
     <div class="section-label">Professional Summary</div>
     <h2>About Me</h2>
     <p>
       I am a Computer Science graduate currently pursuing a Master of Information Technology at the University
       of Western Australia. My academic journey has helped me build a strong foundation in software development,
-      problem-solving, and structured technical thinking. I am especially interested in web development because
-      it combines creativity, logic, and user experience into one discipline.
+      problem-solving and structured technical thinking. I am especially interested in web development because
+      it combines creativity, logic and user experience into one discipline.
     </p>
     <p>
       I enjoy turning ideas into interactive and practical applications that are both visually appealing and
       functionally reliable. Through university coursework and project work, I have developed experience with
-      HTML, CSS, JavaScript, responsive design, and database concepts. I am also becoming more confident with
-      tools such as Git, GitHub, VS Code, and PostgreSQL as I continue to grow as a developer.
+      HTML, CSS, JavaScript, responsive design and database concepts. I am also becoming more confident with
+      tools such as Git, GitHub, VS Code and PostgreSQL as I continue to grow as a developer.
     </p>
     <p>
       One of my recent projects is DevQuest, a multi-page interactive web application that teaches users the
-      fundamentals of HTML, CSS, and JavaScript. Building this project has strengthened my understanding of
-      front-end structure, styling systems, user interface design, and dynamic client-side functionality. It
-      has also helped me think more carefully about usability, consistency, and presenting technical work in a
+      fundamentals of HTML, CSS and JavaScript. Building this project has strengthened my understanding of
+      front-end structure, styling systems, user interface design and dynamic client-side functionality. It
+      has also helped me think more carefully about usability, consistency and presenting technical work in a
       professional way.
     </p>
     <p>
-      In addition to technical development, I value communication, discipline, and adaptability. My experience
-      coaching children has strengthened my ability to explain ideas clearly, work patiently with different
-      learning styles, and create supportive environments. I aim to continue developing into a well-rounded
-      software professional who can contribute both technically and collaboratively in real-world teams.
+      Alongside technical growth, I value clear communication, adaptability and teamwork. I am motivated to
+      keep building practical software skills while contributing thoughtfully in collaborative environments
+      where reliable execution and shared problem-solving matter.
     </p>
   </section>
 
+  <!-- Education Details -->
   <section class="content-card mt-4 reveal-section">
     <div class="section-label">Education</div>
     <h2>Academic Background</h2>
@@ -132,13 +141,14 @@
     </div>
   </section>
 
+  <!-- Skill Bars: widths are animated by js/main.js using each data-width value -->
   <section class="content-card mt-4 reveal-section">
     <div class="section-label">Technical Strengths</div>
     <h2>Skills</h2>
 
     <div class="skill-block">
       <div class="skill-header">
-        <span>HTML5</span>
+        <span>HTML</span>
         <span>90%</span>
       </div>
       <div class="skill-bar">
@@ -148,7 +158,17 @@
 
     <div class="skill-block">
       <div class="skill-header">
-        <span>CSS3 / Bootstrap</span>
+        <span>CSS</span>
+        <span>70%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-fill" data-width="70%"></div>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-header">
+        <span>JavaScript</span>
         <span>85%</span>
       </div>
       <div class="skill-bar">
@@ -158,47 +178,49 @@
 
     <div class="skill-block">
       <div class="skill-header">
-        <span>JavaScript / DOM</span>
-        <span>80%</span>
+        <span>Git</span>
+        <span>65%</span>
       </div>
       <div class="skill-bar">
-        <div class="skill-fill" data-width="80%"></div>
+        <div class="skill-fill" data-width="65%"></div>
       </div>
     </div>
 
     <div class="skill-block">
       <div class="skill-header">
-        <span>Git / GitHub</span>
-        <span>75%</span>
+        <span>SQL</span>
+        <span>85%</span>
       </div>
       <div class="skill-bar">
-        <div class="skill-fill" data-width="75%"></div>
+        <div class="skill-fill" data-width="85%"></div>
       </div>
     </div>
 
-    <div class="skill-block mb-0">
+    <div class="skill-block skill-block-overdrive mb-0">
       <div class="skill-header">
-        <span>SQL / PostgreSQL</span>
-        <span>70%</span>
+        <span>Passion for Learning</span>
+        <span>110%</span>
       </div>
       <div class="skill-bar">
-        <div class="skill-fill" data-width="70%"></div>
+        <div class="skill-fill skill-fill-overdrive" data-width="110%"></div>
       </div>
     </div>
   </section>
 
+  <!-- Featured Project with Toggleable Highlights -->
   <section class="content-card mt-4 reveal-section">
     <div class="section-label">Featured Project</div>
     <h2>DevQuest - Interactive Web Learning Platform</h2>
 
     <p>
-      DevQuest is a multi-page interactive web application developed using HTML, CSS, JavaScript, and Bootstrap.
+      DevQuest is a multi-page interactive web application developed using HTML, CSS, JavaScript and Bootstrap.
       The project is designed to teach users core web development concepts through a structured tutorial page,
-      a dynamic quiz page, an AI reflection log, and a personalised CV page.
+      a dynamic quiz page, an AI reflection log and a personalised CV page.
     </p>
 
     <p class="card-muted">
-      This project demonstrates structured UI design, client-side logic, and user interaction principles.
+      This project demonstrates a polished multi-page interface, interactive learning features, dynamic quiz
+      logic and a consistent custom dark theme built for an engaging student learning experience.
     </p>
 
     <button type="button" class="btn btn-primary mt-2" id="toggleProjectDetails">
@@ -207,28 +229,44 @@
 
     <div id="projectDetails" class="project-details hidden mt-4" aria-live="polite">
       <ul class="mb-0">
-        <li>Designed a coherent multi-page user experience with consistent navigation and styling.</li>
-        <li>Built a responsive interface using Bootstrap combined with custom CSS.</li>
-        <li>Implemented interactive front-end behaviour using JavaScript and DOM manipulation.</li>
-        <li>Planned dynamic quiz functionality using AJAX, score feedback, and local storage.</li>
-        <li>Focused on balancing usability, visual design, and technical requirements.</li>
+        <li>Built a modular front-end web application using HTML, CSS and JavaScript with a reusable component-based design system.</li>
+        <li>Implemented client-side data handling using JSON and dynamic DOM rendering for quiz generation and interaction.</li>
+        <li>Designed event-driven UI interactions including real-time validation, progress tracking and conditional feedback.</li>
+        <li>Utilised browser APIs such as localStorage for persistent state management and fetch() for asynchronous data retrieval with error handling fallback.</li>
+        <li>Developed interactive learning tools including a DOM manipulation demo, CSS state switcher and embedded code execution playground.</li>
+        <li>Ensured responsiveness and accessibility through structured semantic HTML and adaptive layout design.</li>
       </ul>
     </div>
   </section>
 
+  <!-- Additional Experience Entries -->
   <section class="content-card mt-4 reveal-section">
     <div class="section-label">Experience</div>
     <h2>Additional Experience</h2>
+
+    <div class="cv-item">
+      <h3>Dognosis Engineering Project</h3>
+      <p>
+        Contributed to an engineering project connected to Dognosis, a frontier R&amp;D venture exploring
+        interspecies collaboration between humans and dogs to support early disease detection. The project
+        strengthened my understanding of practical technical work, problem-solving, teamwork and project
+        execution in a mission-driven context focused on proactive and preventative medicine.
+      </p>
+    </div>
+
+    <hr class="soft-divider">
+
     <div class="cv-item">
       <h3>Basketball Coach</h3>
       <p>
         Coached young children in a structured and supportive environment, helping them develop confidence,
-        teamwork, and discipline. This role strengthened my communication, patience, leadership, and ability
+        teamwork and discipline. This role strengthened my communication, patience, leadership and ability
         to adapt explanations for different learners.
       </p>
     </div>
   </section>
 
+  <!-- References and Acknowledgements -->
   <section class="content-card mt-4 reveal-section">
     <div class="section-label">References</div>
     <h2>Sources and Acknowledgements</h2>
@@ -241,7 +279,7 @@
       <li>Daggitt, M., &amp; Alvi, M. (2026). <em>CITS5505 Agile Web Development lecture materials</em>. University of Western Australia.</li>
       <li>Mozilla Developer Network. (n.d.). <em>MDN Web Docs</em>.</li>
       <li>W3Schools. (n.d.). <em>HTML, CSS and JavaScript tutorials</em>.</li>
-      <li>OpenAI. (2026). <em>ChatGPT</em> [Large language model]. Used for planning, debugging support, and writing refinement.</li>
+      <li>OpenAI. (2026). <em>ChatGPT</em> [Large language model]. Used for planning, debugging support and writing refinement.</li>
     </ol>
   </section>
 

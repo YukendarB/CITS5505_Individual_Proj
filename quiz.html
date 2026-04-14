@@ -44,19 +44,21 @@
 
 <main class="container py-5">
 
+  <!-- Quiz Intro Card -->
   <section class="page-intro">
-    <div class="section-label">Knowledge Check</div>
+    <div class="section-label">MISSION 2</div>
     <h1>Quiz</h1>
     <p class="lead mb-0">
-      Choose a topic from the DevQuest tutorial path, then test your HTML, CSS, JavaScript, or mixed web skills.
+      Choose a topic from the DevQuest tutorial path, then test your HTML, CSS, JavaScript or mixed web skills.
     </p>
   </section>
 
+  <!-- Quiz Mode Selector -->
   <section class="content-card mt-4">
     <div class="section-label">Choose Your Challenge</div>
     <h2>Quiz Mode</h2>
     <p class="card-muted">
-      Select a focused quiz after studying a tutorial section, or try the mixed challenge across all topics.
+      Select a focused quiz after studying a tutorial section or try the mixed challenge across all topics.
       The pass threshold is 70% for every mode.
     </p>
 
@@ -70,6 +72,7 @@
     <p class="current-mode mt-3 mb-0" id="currentMode">Current mode: HTML Quiz</p>
   </section>
 
+  <!-- Dynamic Quiz Form: JavaScript loads questions into #quizContainer -->
   <section class="content-card mt-4">
     <div class="section-label">Answer Every Question</div>
     <h2 id="quizTitle">HTML Quiz</h2>
@@ -106,16 +109,19 @@
     </form>
   </section>
 
+  <!-- Quiz Result Output -->
   <section class="content-card mt-4">
     <h2>Result</h2>
     <div id="result" aria-live="polite"></div>
   </section>
 
+  <!-- Reward Quote Output -->
   <section class="content-card mt-4">
     <h2>Reward</h2>
     <div id="reward" aria-live="polite"></div>
   </section>
 
+  <!-- Local Storage Attempt History -->
   <section class="content-card mt-4">
     <div class="d-flex flex-column flex-md-row gap-3 justify-content-between align-items-md-center">
       <h2 class="mb-0">Previous Attempts</h2>
