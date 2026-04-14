@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function escapeHTML(value) {
+    // Prevents question text/options from being interpreted as HTML when rendered.
     return String(value)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setStatus(message, type = "info") {
+    // The type becomes part of the class name so CSS can style success/error states.
     quizStatus.textContent = message;
     quizStatus.className = `quiz-status quiz-status-${type}`;
   }
@@ -76,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function saveAttempt(attempt) {
     try {
       const attempts = getAttempts();
+      // Newest attempts appear first in the history list.
       attempts.unshift(attempt);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(attempts));
     } catch (error) {
@@ -96,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const listItems = attempts.map((attempt) => {
       const statusClass = attempt.passed ? "status-pass" : "status-fail";
 
+      // Build each saved attempt row from localStorage data.
       return `
         <li>
           <strong>${escapeHTML(attempt.mode)}</strong> - ${attempt.score}/${attempt.total} - ${attempt.percentage}% -
@@ -122,10 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
           return qTopic === mTopic;
         });
 
-    console.log("Mode:", modeKey);
-    console.log("Total questions loaded:", allQuestions.length);
-    console.log("Filtered question count:", pool.length);
-
     return shuffle(pool).slice(0, mode.count);
   }
 
@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function clearFeedback() {
+    // Clears result cards and removes any previous answer highlighting.
     setResultRewardPlaceholders();
     quizContainer.querySelectorAll(".quiz-question").forEach((questionCard) => {
       questionCard.classList.remove("question-unanswered");
@@ -157,12 +158,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setValidationMessage(isVisible) {
     if (!quizValidationMessage) return;
+    // Toggling the hidden class keeps the message available for screen readers when visible.
     quizValidationMessage.classList.toggle("hidden", !isVisible);
+  }
+
+  function getSelectedAnswer(questionIndex) {
+    return quizForm.querySelector(`input[name="question-${questionIndex}"]:checked`);
+  }
+
+  function getQuestionCard(questionIndex) {
+    return quizContainer.querySelector(`[data-question-index="${questionIndex}"]`);
   }
 
   function allQuestionsAnswered() {
     return currentQuestions.every((question, index) => {
-      return Boolean(quizForm.querySelector(`input[name="question-${index}"]:checked`));
+      return Boolean(getSelectedAnswer(index));
     });
   }
 
@@ -261,8 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let isValid = true;
 
     currentQuestions.forEach((question, index) => {
-      const questionCard = quizContainer.querySelector(`[data-question-index="${index}"]`);
-      const checkedAnswer = quizForm.querySelector(`input[name="question-${index}"]:checked`);
+      const questionCard = getQuestionCard(index);
+      const checkedAnswer = getSelectedAnswer(index);
       const isAnswered = Boolean(checkedAnswer);
 
       if (questionCard) {
@@ -276,8 +286,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function calculateScore() {
+    // Compare selected radio values with the answer index stored in the JSON.
     return currentQuestions.reduce((score, question, index) => {
-      const checkedAnswer = quizForm.querySelector(`input[name="question-${index}"]:checked`);
+      const checkedAnswer = getSelectedAnswer(index);
 
       if (!checkedAnswer) return score;
 
@@ -288,8 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Highlights selected answers after submission so the user gets feedback.
   function updateQuestionFeedback(questionIndex) {
     const question = currentQuestions[questionIndex];
-    const checkedAnswer = quizForm.querySelector(`input[name="question-${questionIndex}"]:checked`);
-    const questionCard = quizContainer.querySelector(`[data-question-index="${questionIndex}"]`);
+    const checkedAnswer = getSelectedAnswer(questionIndex);
+    const questionCard = getQuestionCard(questionIndex);
 
     if (!question || !checkedAnswer || !questionCard) return;
 
@@ -325,6 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderRewardCard(tier, message, type = "success") {
+    // Centralizes reward card markup so API success and fallback states look consistent.
     reward.innerHTML = `
       <div class="reward-card reward-card-${type}">
         <div class="reward-tier-label">Achievement Tier</div>
@@ -339,16 +351,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const tier = getRewardTier(percentage);
     const rewardApiUrl = "https://dummyjson.com/quotes/random";
     renderRewardCard(tier, "Fetching your reward quote...", "loading");
-    console.log("Reward API URL:", rewardApiUrl);
 
     try {
       const response = await fetch(rewardApiUrl, { cache: "no-store" });
-      console.log("Reward API response status:", response.status);
 
       if (!response.ok) throw new Error("Reward API failed");
 
       const data = await response.json();
-      console.log("Reward API parsed response:", data);
 
       const quote = data && data.quote ? data.quote : "";
       const author = data && data.author ? ` - ${data.author}` : "";
@@ -448,6 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setStatus("Loading questions...", "info");
 
     try {
+      // Store all questions once, then filter them whenever the mode changes.
       allQuestions = await loadQuestionData();
       loadMode(activeMode);
     } catch (error) {
@@ -495,11 +505,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   resetQuiz.addEventListener("click", () => {
+    // Reloading the active mode also reshuffles the selected question pool.
     loadMode(activeMode);
   });
 
   clearHistory.addEventListener("click", () => {
     try {
+      // Removes only the DevQuest quiz history key, not unrelated browser storage.
       localStorage.removeItem(STORAGE_KEY);
       renderHistory();
       setStatus("Attempt history cleared.", "success");

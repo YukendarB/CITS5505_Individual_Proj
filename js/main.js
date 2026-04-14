@@ -19,7 +19,9 @@ function initialiseDevQuestPage() {
   // Tutorial CSS lab: only runs when the style switcher elements exist.
   if (cssDemoButton && cssDemoTarget && cssDemoCode && cssDemoExplanation) {
     let cssStep = -1;
+    // These classes represent the visual states users cycle through in the CSS demo.
     const cssStates = ["css-demo-spacious", "css-demo-accent", "css-demo-compact", "css-demo-contrast"];
+    // Each state also updates the code sample and explanation shown beside the demo.
     const cssExamples = [
       {
         label: "Spacious layout",
@@ -56,6 +58,7 @@ function initialiseDevQuestPage() {
     ];
 
     cssDemoButton.addEventListener("click", () => {
+      // Remove the previous demo state before applying the next one.
       cssDemoTarget.classList.remove(...cssStates);
       cssStep = (cssStep + 1) % cssStates.length;
       cssDemoTarget.classList.add(cssStates[cssStep]);
@@ -68,6 +71,7 @@ function initialiseDevQuestPage() {
   // Tutorial JavaScript lab: only runs when the DOM update demo exists.
   if (demoButton && demoOutput && jsDemoState && jsDemoExplanation) {
     let demoStep = -1;
+    // Each button click advances to the next DOM update example.
     const demoMessages = [
       {
         label: "State: text updated",
@@ -88,6 +92,7 @@ function initialiseDevQuestPage() {
 
     demoButton.addEventListener("click", () => {
       demoStep = (demoStep + 1) % demoMessages.length;
+      // The demo changes text and applies CSS classes without reloading the page.
       demoOutput.textContent = demoMessages[demoStep].output;
       jsDemoState.textContent = demoMessages[demoStep].label;
       jsDemoExplanation.textContent = demoMessages[demoStep].explanation;
@@ -113,8 +118,10 @@ function initialiseDevQuestPage() {
     };
 
     const renderCodePlayground = () => {
+      // Escape closing script tags so user input cannot break out of the preview script block.
       const safeScript = jsPlaygroundInput.value.replace(/<\/script/gi, "<\\/script");
 
+      // srcdoc writes the combined HTML, CSS and JavaScript into the sandboxed iframe.
       codePlaygroundFrame.srcdoc = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,8 +143,10 @@ ${safeScript}
       playgroundStatus.textContent = `Output updated at ${now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}.`;
     };
 
+    // Render the latest editor content when the user presses Run Code.
     runPlaygroundButton.addEventListener("click", renderCodePlayground);
 
+    // Restore the starter code so users can safely experiment and reset.
     resetPlaygroundButton.addEventListener("click", () => {
       htmlPlaygroundInput.value = starterCode.html;
       cssPlaygroundInput.value = starterCode.css;
@@ -184,6 +193,7 @@ ${safeScript}
         entry.target.classList.add("is-visible");
 
         entry.target.querySelectorAll(".skill-fill").forEach((bar) => {
+          // Each skill bar stores its target width in HTML using data-width.
           const width = bar.dataset.width || "0%";
           bar.style.width = width;
         });

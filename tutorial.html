@@ -522,6 +522,7 @@ fetch("data/questions.json")
           <article class="lab-card lab-card-primary">
             <div class="lab-card-label">Step 2: JavaScript behavior</div>
             <h3>DOM Update Console</h3>
+            <!-- These demo elements are updated by js/main.js when the demo command button is clicked. -->
             <div class="js-state-label" id="jsDemoState">State: waiting</div>
             <p class="demo-output" id="demoOutput" aria-live="polite">
               Mission console: waiting for your first command.
@@ -585,6 +586,7 @@ button.addEventListener("click", () =&gt; {
           </div>
 
           <div class="code-playground-actions">
+            <!-- The run/reset buttons control the sandboxed iframe preview below. -->
             <button type="button" class="btn btn-primary" id="runPlaygroundButton">Run Code</button>
             <button type="button" class="btn btn-outline-light" id="resetPlaygroundButton">Reset Starter Code</button>
             <span id="playgroundStatus" class="playground-status" aria-live="polite">Output is ready for launch.</span>

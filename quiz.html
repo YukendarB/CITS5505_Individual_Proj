@@ -83,6 +83,7 @@
 
     <form id="quizForm" novalidate>
       <div class="quiz-progress-wrap">
+        <!-- Progress UI: js/quiz.js updates these counts and the fill width as answers are selected. -->
         <div class="quiz-progress-card progress-idle" id="quizProgressCard">
           <div class="quiz-progress-meta">
             <span class="quiz-progress-label" id="progressLabel">Ready for launch...</span>
@@ -96,10 +97,13 @@
         </div>
       </div>
 
+      <!-- Question cards are created here dynamically from data/questions.json. -->
       <div id="quizContainer"></div>
 
       <div class="quiz-actions mt-3">
+        <!-- Submit validates all questions before calculating the final score. -->
         <button type="submit" class="btn btn-primary">Submit Quiz</button>
+        <!-- Reset keeps the selected quiz mode but starts a new randomized attempt. -->
         <button type="button" class="btn btn-outline-light" id="resetQuiz">Reset Current Attempt</button>
       </div>
 
@@ -112,12 +116,14 @@
   <!-- Quiz Result Output -->
   <section class="content-card mt-4">
     <h2>Result</h2>
+    <!-- Score and pass/fail feedback are rendered here after submission. -->
     <div id="result" aria-live="polite"></div>
   </section>
 
   <!-- Reward Quote Output -->
   <section class="content-card mt-4">
     <h2>Reward</h2>
+    <!-- Reward card is filled by js/quiz.js after the score is calculated. -->
     <div id="reward" aria-live="polite"></div>
   </section>
 
